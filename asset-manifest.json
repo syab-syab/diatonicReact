@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/diatonicReact/static/css/main.1ec00b27.css",
+    "main.js": "/diatonicReact/static/js/main.a987f5dc.js",
+    "static/js/787.04a7c017.chunk.js": "/diatonicReact/static/js/787.04a7c017.chunk.js",
+    "static/media/background.jpg": "/diatonicReact/static/media/background.2c6e53a8681c0e66660e.jpg",
+    "service-worker.js": "/diatonicReact/service-worker.js",
+    "index.html": "/diatonicReact/index.html",
+    "main.1ec00b27.css.map": "/diatonicReact/static/css/main.1ec00b27.css.map",
+    "main.a987f5dc.js.map": "/diatonicReact/static/js/main.a987f5dc.js.map",
+    "787.04a7c017.chunk.js.map": "/diatonicReact/static/js/787.04a7c017.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ec00b27.css",
+    "static/js/main.a987f5dc.js"
+  ]
+}
