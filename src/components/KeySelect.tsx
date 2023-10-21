@@ -8,7 +8,8 @@ type Props = {
 const KeySelect = (props: Props) => {
   return (
     <>
-      <select className="choose-key" value={props.value} onChange={props.onChange}>
+      <label className='key-label' htmlFor="choose-key">Key:</label>
+      <select className="choose-key" id='choose-key' value={props.value} onChange={props.onChange}>
         <option value="3">C</option>
         <option value="4">D♭</option>
         <option value="5">D</option>
