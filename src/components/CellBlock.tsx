@@ -11,7 +11,7 @@ const CellBlock = (props: Props) => {
       {
         props.diatonic.map(c => {
           return (
-            <div className={props.class}>{c}</div>
+            <div key={c} className={props.class}>{c}</div>
           )
         })
       }

@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import Footer from './components/Footer';
 import CellBlock from './components/CellBlock';
 import KeySelect from './components/KeySelect';
+import rearrangeKey from './functions/rearrangeKey';
 // import 'normalize.css/normalize.css';
 import './App.css';
 
@@ -24,24 +25,6 @@ function App() {
   let $keyIndexSharp: Array<string> = ['A', 'A#', 'B','C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#',]
   // ♭
   let $keyIndexFlat: Array<string> = ['A', 'B♭', 'B','C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭',]
-
-
-
-  // 選択されたキーが最初になるよう並び替える関数
-  const rearrangeKey = (arr: Array<string>, index: string): Array<string> =>  {
-    let arrKey = arr.concat();
-    let splicesKey = arrKey.splice(0, parseInt(index));
-    let concatsKey = arrKey.concat(splicesKey);
-    let rearrangeArr = [];
-    rearrangeArr.push(concatsKey[0] + "△7");
-    rearrangeArr.push(concatsKey[2] + "m7");
-    rearrangeArr.push(concatsKey[4] + "m7");
-    rearrangeArr.push(concatsKey[5] + "△7");
-    rearrangeArr.push(concatsKey[7] + "7");
-    rearrangeArr.push(concatsKey[9] + "m7");
-    rearrangeArr.push(concatsKey[11] + "m7(♭5)");
-    return rearrangeArr;
-  }
 
   // キーが#
   const  majorSort = () => {
@@ -83,21 +66,21 @@ function App() {
     <div className="App">
       <Header />
       <main className="container">
-      <div className="key-select">
-        <KeySelect value={key} onChange={changeKey} />
-      </div>
-      <div id="display-space" className="display-space">
-        <div className="container-cell">
-          {/* クラス名は cell-block */}
-          <CellBlock class='cell-block' diatonic={diatonicChords} />
+        <div className="key-select">
+          <KeySelect value={key} onChange={changeKey} />
         </div>
-        <div className="container-cell">
-          {/* クラス名は cell-block cell-heading */}
-          <CellBlock class='cell-block cell-heading' diatonic={indexChords} />
+        <div id="display-space" className="display-space">
+          <div className="container-cell">
+            {/* クラス名は cell-block */}
+            <CellBlock class='cell-block' diatonic={diatonicChords} />
+          </div>
+          <div className="container-cell">
+            {/* クラス名は cell-block cell-heading */}
+            <CellBlock class='cell-block cell-heading' diatonic={indexChords} />
+          </div>
         </div>
-      </div>
-    </main>
-    <Footer class="footer"/>
+      </main>
+      <Footer class="footer"/>
     </div>
   );
 }
