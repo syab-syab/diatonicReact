@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { Header } from './Header';
-import 'normalize.css/normalize.css';
+import { Header } from './components/Header';
+import Footer from './components/Footer';
+import CellBlock from './components/CellBlock';
+import KeySelect from './components/KeySelect';
+// import 'normalize.css/normalize.css';
 import './App.css';
 
 function App() {
 
+  const localKey = (): string => {
+    const tmp = localStorage.getItem("local-diatonic-key")
+    if (!tmp) {
+      return "3"
+    } else {
+      return tmp
+    }
+  }
+
   // 選択されているキー
-  const [key, setKey] = useState<string>("3")
+  const [key, setKey] = useState<string>(localKey)
 
   // #
   let $keyIndexSharp: Array<string> = ['A', 'A#', 'B','C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#',]
@@ -58,68 +70,34 @@ function App() {
     }
   }
 
-   // const originChords: Array<string> = ["Ⅰ△7", "Ⅱm7", "Ⅲm7", "Ⅳ△7", "Ⅴ7", "Ⅵm7", "Ⅶm7(♭5)"]
+   const indexChords: Array<string> = ["Ⅰ△7", "Ⅱm7", "Ⅲm7", "Ⅳ△7", "Ⅴ7", "Ⅵm7", "Ⅶm7(♭5)"]
 
-  const originChords: Array<string> = decideDiatonic(key)
+  const diatonicChords: Array<string> = decideDiatonic(key)
 
   const changeKey = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    localStorage.setItem("local-diatonic-key", e.target.value)
     setKey(e.target.value)
   }
 
   return (
     <div className="App">
       <Header />
-      {key}
       <main className="container">
       <div className="key-select">
-        <label htmlFor="choose-key">キー選択</label>
-        <select id='choose-key' className="choose-key" value={key} onChange={changeKey}>
-          <option value="0">A</option>
-          <option value="1">B♭</option>
-          <option value="2">B</option>
-          <option value="3">C</option>
-          <option value="4">D♭</option>
-          <option value="5">D</option>
-          <option value="6">E♭</option>
-          <option value="7">E</option>
-          <option value="8">F</option>
-          <option value="9">F#</option>
-          <option value="10">G</option>
-          <option value="11">A♭</option>
-        </select>
+        <KeySelect value={key} onChange={changeKey} />
       </div>
       <div id="display-space" className="display-space">
         <div className="container-cell">
-          {
-            originChords.map(c => {
-              return (
-                <div key={c} className="cell-block">{c}</div>
-              )
-            })
-          }
+          {/* クラス名は cell-block */}
+          <CellBlock class='cell-block' diatonic={diatonicChords} />
         </div>
         <div className="container-cell">
-          <div className="cell-block cell-heading">Ⅰ△7</div>
-          <div className="cell-block cell-heading">Ⅱm7</div>
-          <div className="cell-block cell-heading">Ⅲm7</div>
-          <div className="cell-block cell-heading">Ⅳ△7</div>
-          <div className="cell-block cell-heading">Ⅴ7</div>
-          <div className="cell-block cell-heading">Ⅵm7</div>
-          <div className="cell-block cell-heading">Ⅶm7(♭5)</div>
+          {/* クラス名は cell-block cell-heading */}
+          <CellBlock class='cell-block cell-heading' diatonic={indexChords} />
         </div>
-        
       </div>
     </main>
-    <footer className="footer">
-      {/* <div className="twitter-share-btn">
-        <a href="http://twitter.com/share?url=https://syab-syab.github.io/diatonicChord/&text=ダイアトニックコードのカンペ" target="_blank">
-          <i className="fa-brands fa-twitter"></i><span>Twitter</span>
-        </a>
-      </div> */}
-      <span className="copy">
-        © ダイアトニックコードのカンペ
-      </span>
-    </footer>
+    <Footer class="footer"/>
     </div>
   );
 }

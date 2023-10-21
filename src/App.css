@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 * {
   font-size: 62.5%;
@@ -11,9 +11,13 @@
   box-sizing: border-box;
 }
 
+.red {
+  background-color: red;
+}
+
 body {
   color: #bfb8b8;
-  /* background: url(../images/background.jpg) no-repeat; */
+  background: url(../public/img/background.jpg) no-repeat;
   background-size: cover;
   background-color:rgb(0 68 29 / 80%);
   background-blend-mode: multiply;
@@ -163,7 +167,7 @@ body {
 
   .header {
     padding: 5rem 0;
-    /* background: url(../images/background.jpg) no-repeat; */
+    background: url(../public/img/background.jpg) no-repeat;
     background-color:rgb(0 68 29 / 80%);
     background-blend-mode: multiply;
     background-size: cover;
