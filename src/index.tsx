@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import ReactGA from "react-ga4";
+
+
+// アナリティクス
+const analyticsPass: any = process.env.REACT_APP_GOOGLE_ANALYTICS_PASS
+
+ReactGA.initialize(analyticsPass);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
